@@ -1,8 +1,27 @@
+import java.util.Scanner;
+
 public class Calc {
     private double num1;
     private double num2;
 
     public Calc() {
+    }
+
+    // Keep prompting until the user enters a finite number.
+    public static double readNumericInput(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            if (scanner.hasNextDouble()) {
+                double value = scanner.nextDouble();
+                if (Double.isFinite(value)) {
+                    return value;
+                }
+            } else {
+                // Consume the invalid token so the next prompt can read new input.
+                scanner.next();
+            }
+            System.out.println("Invalid input. Please enter a numeric value.");
+        }
     }
 
     public void setNum1(double num1) {
