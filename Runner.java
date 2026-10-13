@@ -9,10 +9,8 @@ public class Runner {
         Calc myCalculator = new Calc();
         //get user input for two numbers
         Scanner scan = new Scanner(System.in);
-        System.out.println("Please enter the first number: ");
-        double n1 = scan.nextDouble();
-        System.out.println("Please enter the second number: ");
-        double n2 = scan.nextDouble();
+        double n1 = Calc.readNumericInput(scan, "Please enter the first number: ");
+        double n2 = Calc.readNumericInput(scan, "Please enter the second number: ");
 
         //pass the numbers to the Calc object
         myCalculator.setNum1(n1);
