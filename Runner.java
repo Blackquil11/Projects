@@ -1,36 +1,37 @@
-//this class tests all methods in the Calc class
-//the Calc class exposes the following methods:
-//add, subtract, multiply, divide
-//user is prompted for input
-import java.util.Scanner;
 public class Runner {
-    public static void main(String[] args){
-        //instantiate a Calc object
-        Calc myCalculator = new Calc();
-        //get user input for two numbers
-        Scanner scan = new Scanner(System.in);
-        double n1 = Calc.readNumericInput(scan, "Please enter the first number: ");
-        double n2 = Calc.readNumericInput(scan, "Please enter the second number: ");
+    // exercises the IntArray class
+    public static void main(String[] args) {
+        IntArray iArr = new IntArray(10);
+        int leng = iArr.size();
 
-        //pass the numbers to the Calc object
-        myCalculator.setNum1(n1);
-        myCalculator.setNum2(n2);
+        System.out.println("The number of array elements is: " + leng);
 
-        //output from Calc instance
-        System.out.println(myCalculator);
+        iArr.fillRand();
+        System.out.println("Array with 10 elements filled with random numbers between 1 and 6");
+        System.out.println(iArr);
 
-        //examining the instance private data fields by calling get methods
-        System.out.println("Calling num1 get method: " + myCalculator.getNum1());
-        System.out.println("Calling num2 get method: " + myCalculator.getNum2());
+        iArr.set(5, 6789);
+        System.out.println("The value of array element 5 is: " + iArr.get(5));
+        System.out.println(iArr);
 
-        //calling Calc methods directly
-        //can use a local variable for sum if you need that value for another calculation
-        double sum = myCalculator.add();
-        System.out.println("The sum is: " + sum);
+        iArr.clear();
+        if (iArr.isEmpty()) {
+            System.out.println("iArr is empty\n");
+        }
 
-        //or if you don't, then just display the difference, product and quotient
-        System.out.println("The difference is: " + myCalculator.subtract());
-        System.out.println("The product is: " + myCalculator.multiply());
-        System.out.println("The quotient is: " + myCalculator.divide());
+        iArr = new IntArray(100);
+        iArr.fillRand();
+
+        System.out.println("Array with 100 elements filled with random numbers between 1 and 6");
+        System.out.println(iArr);
+
+        if (!iArr.isEmpty()) {
+            iArr.sort();
+        } else {
+            System.out.println("Array is empty, nothing to sort");
+        }
+
+        System.out.println("Array after sorting\n");
+        System.out.println(iArr);
     }
 }
