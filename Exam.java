@@ -15,8 +15,13 @@ public class Exam extends Assessment {
     public Exam(int questions, int missed) {
         numQuestions = questions;
         numMissed = missed;
-        pointsEach = 100 / numQuestions;
-        setScore(100 - numMissed * pointsEach);
+        try {
+            pointsEach = 100 / numQuestions;
+            setScore(100 - numMissed * pointsEach);
+        } catch (ArithmeticException e) {
+            pointsEach = 0;
+            setScore(0);
+        }
     }
 
     /**
